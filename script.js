@@ -3,11 +3,14 @@
 let num = +prompt('Введите первое число:');
 let num1 = +prompt('Введите второе число:');
 let sumboll = prompt('Введите математическое действие:');
-let error1 = num == 0 || num1 == 0;
+let error1 = num1 == 0;
+let result = num / num1;
 
 try {
-  if (error1) {
-    throw 'Error делить на 0 нельзя!';
+  if (error1 && result) {
+    throw '0';
+  } else if (isNaN(num, num1)) {
+    throw 'Nan!';
   } else {
     if (sumboll == '+') {
       console.log(num + num1);
@@ -22,5 +25,9 @@ try {
     }
   }
 } catch (error) {
-  console.log(error);
+  if (error == '0') {
+    console.log('Error делить на 0 нельзя!');
+  } else if (error == 'Nan!') {
+    console.log('Вы ввели не число!');
+  }
 }
